@@ -13,6 +13,9 @@
     <h1>Single project page</h1>
     <h1>{{project.title}}</h1>
     <br>
+    {% for tag in tags %}
+      <h4>{{tag}}</h4>
+    {% endfor %}
     <h3>{{project.description}}</h3>
 
     {% endblock content %}

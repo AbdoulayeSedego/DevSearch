@@ -10,20 +10,31 @@
 <body>
     {% block content %}
 
-    {{message}}
-
-    {% if number > 10 %}
-    <h1>Number is greater than 10</h1>
-    {% else %}
-    <h1>Number is less than 10</h1>
-    {% endif %}
-
     <h1>projects</h1>
-    <ul>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Project</th>
+            <th>Positive Votes</th>
+            <th>Votes</th>
+            <th>Date</th>
+            <th>Preview</th>
+        </tr>
         {% for project in projects %}
-        <li>Title: <a href="{% url 'project' project.id %}">{{project.title}}</a> ====> {{project.description}}</li>
+            <tr>
+                <td>{{project.id}}</td>
+                <td>{{project.title}}</td>
+                <td>{{project.vote_ratio}}%</td>
+                <td>{{project.vote_total}}</td>
+                <td>{{project.created}}</td>
+                <td><a href="{% url 'project' project.id %}">View</a></td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
+
+
+        
 
 
 

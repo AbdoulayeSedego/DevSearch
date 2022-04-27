@@ -1,23 +1,15 @@
 {% extends 'main.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% block content %}
 
-    <h1>Single project page</h1>
-    <h1>{{project.title}}</h1>
+{% block content %}
+
+<img src="{{project.feature_image.url}}" alt="project image">
+  <h1>{{project.title}}</h1>
     <br>
-    {% for tag in tags %}
+  {% for tag in tags %}
       <h4>{{tag}}</h4>   
-    {% endfor %}
+      {% endfor %}
     <h3>{{project.description}}</h3>
 
-    {% endblock content %}
+{% endblock content %}
 </body>
 </html>

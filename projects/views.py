@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.http import HttpResponse
-from .models import Project
+from .models import Project, Tag
 from .forms import ModelForm, projectForm
 
 

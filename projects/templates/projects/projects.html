@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 {% block content %}
 
-  <!-- Main Section -->
-  <main class="projects">
+   <!-- Main Section -->
+   <main class="projects">
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
@@ -26,23 +26,22 @@
     <section class="projectsList">
       <div class="container">
         <div class="grid grid--three">
-         {% for project in projects %}
+        {% for project in projects %}
           <div class="column">
             <div class="card project">
-              <a href="{% url 'project' project.id %}"" class="project">
-                <img class="project__thumbnail" src="{{project.feature_image.url}}" alt="project thumbnail" />
+              <a href="{% url 'project' project.id %}" class="project">
+                <img class="project__thumbnail" src="{{project.featured_image.url}}" alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{project.title}}</h3>
-                  <p><a class="project__author" href="{% url 'project' project.id %}"">By Dennis Ivanov</a></p>
+                  <p><a class="project__author" href="{% url 'project' project.id %}">By Dennis Ivanov</a></p>
                   <p class="project--rating">
-                    <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Postitive
-                    Feedback ({{project.vote_total}} Votes)
+                    <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Posititive
+                    Feedback ({{project.vote_total}}) Vote{{project.vote_total|pluralize:"s"}}
                   </p>
-                  <!-- Tags -->
-                  {% for tag in project.tags.all %}
                   <div class="project__tags">
+                    {% for tag in project.tags.all %}
                     <span class="tag tag--pill tag--main">
-                      <small>{{tag.name}}</small>
+                      <small>{{tag}}</small>
                     </span>
                     {% endfor %}
                   </div>
@@ -56,8 +55,5 @@
       </div>
     </section>
   </main>
-
-
-    {% endblock content %}
-</body>
-</html>
+ 
+{% endblock content %}

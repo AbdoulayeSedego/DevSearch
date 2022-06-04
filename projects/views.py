@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
 from .models import Project, Tag
-from .forms import ModelForm, projectForm
+from .forms import ModelForm, ProjectForm
 
 
 projectsList = [
@@ -39,10 +39,10 @@ def project(request, pk):
 
 
 def createProject(request):
-    form = projectForm()
+    form = ProjectForm()
 
     if request.method == 'POST':
-        form = projectForm(request.POST, request.FILES)
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('projects')
@@ -52,10 +52,10 @@ def createProject(request):
 
 def updateProject(request, pk):
     project = Project.objects.get(id=pk)
-    form = projectForm(instance=project)
+    form = ProjectForm(instance=project)
 
     if request.method == 'POST':
-        form = projectForm(request.POST, request.FILES, instance=project)
+        form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
             return redirect('projects')
